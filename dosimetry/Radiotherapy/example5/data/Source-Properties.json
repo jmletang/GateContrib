@@ -1,0 +1,43 @@
+
+{
+    "#---------------------------------------------------------": "",
+    "#Source properties": "",
+    "#---------------------------------------------------------": "",
+    "nozzle_exit_to_isocenter_distance_in_mm": 500,
+    "smx_to_isocenter_distance_in_mm": 2000,
+    "smy_to_isocenter_distance_in_mm": 2000,
+
+    "#---------------------------------------------------------": "",
+    "# Energy properties": "",
+    "#---------------------------------------------------------": "",
+    "energy_mean_polynomial_order":1,
+    "energy_mean_polynomial_parameters":[1,0],
+    "energy_spread_polynomial_type":"percent",
+    "energy_spread_polynomial_order":1,
+    "energy_spread_polynomial_parameters":[0.01,0],
+
+    "#---------------------------------------------------------": "",
+    "# Spots properties": "",
+    "#---------------------------------------------------------": "",
+    "spot_x_polynomial_order":1,
+    "spot_x_polynomial_parameters":[0.01,2],
+
+    "spot_y_polynomial_order":1,
+    "spot_y_polynomial_parameters":[0.01,2],
+
+    "spot_theta_polynomial_order":0,
+    "spot_theta_polynomial_parameters":[0.003],
+
+    "spot_phi_polynomial_order":0,
+    "spot_phi_polynomial_parameters":[0.002],
+
+    "spot_emittance_x_theta_polynomial_order":0,
+    "spot_emittance_x_theta_polynomial_parameters":[0.01],
+
+    "spot_emittance_y_phi_polynomial_order":0,
+    "spot_emittance_y_phi_polynomial_parameters":[0.005],
+
+    "spot_monitor_calibration_polynomial_order":0,
+    "spot_monitor_calibration_polynomial_parameters":[0]
+
+}
