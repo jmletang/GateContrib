@@ -17,7 +17,7 @@ A pgdb_20231027.root with $10^9$ primaries per material has been supplied (with 
 
 At the time of writing Geant4 generates a very large number of low energy PGs (2-25keV) that appear not physical. They're killed in their first step. The pgdb.root therefore doesn't ship with the 5 heaviest elements, that are severly affected by these affected by these particles. Therefore, the actor (`PromptGammaStatisticActor`) used to create the elemental databases has a hard cut on PGs <40keV (the first bin with the PGs energy windows+binning settings). We feel this is acceptable until the issue with Geant4 is solved, as these particles will never exit the patient anyway.
 
-### Stages X \in (1 , 2)
+### Stages X $\in (1 , 2)$
 
 The head and neck phantom from the protontherapy example has been used.
 
