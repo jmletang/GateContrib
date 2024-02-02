@@ -1,0 +1,45 @@
+
+/control/execute mac/visu.mac
+/gate/geometry/setMaterialDatabase data/GateMaterials.db
+
+#=====================================================
+# GEOMETRY & PHYSICS
+#=====================================================
+
+/control/strdoif {Element} != patient /control/execute mac/geo_box.mac
+/control/strdoif {Element} == patient /control/execute mac/geo_patient.mac
+
+/control/execute mac/physics.mac
+
+#=====================================================
+# ACTORS
+#=====================================================
+
+/gate/actor/addActor               SimulationStatisticActor stat
+/gate/actor/stat/save              output/stat{StageID}_{Mode}_{Element}.txt
+
+/control/execute mac/stage{StageID}_actors.mac
+
+#=====================================================
+# INITIALISATION
+#=====================================================
+
+/gate/run/initialize
+
+#=====================================================
+# SOURCE
+#=====================================================
+
+/control/execute mac/stage{StageID}_beams.mac
+
+#=====================================================
+# START BEAMS
+#=====================================================
+
+/gate/application/noGlobalOutput
+/gate/run/enableGlobalOutput false
+
+/gate/random/setEngineName MersenneTwister
+/gate/random/setEngineSeed auto
+/gate/application/setTotalNumberOfPrimaries {NrPrim}
+/gate/application/start

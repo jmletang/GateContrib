@@ -1,0 +1,6 @@
+
+/gate/source/addSource PBS TPSPencilBeam
+/gate/source/PBS/setTestFlag false
+/gate/source/PBS/setPlan data/RTIPLAN.0912590.16.onelayer.txt
+/gate/source/PBS/setFlatGenerationFlag false
+/gate/source/PBS/setSourceDescriptionFile data/Source-Properties.txt

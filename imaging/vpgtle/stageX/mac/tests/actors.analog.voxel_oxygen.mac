@@ -1,0 +1,25 @@
+# ----------------------------------------------------
+# Statistics Actor
+# ----------------------------------------------------
+/gate/actor/addActor               SimulationStatisticActor stat
+/gate/actor/stat/save             output/stat-proton.txt
+
+# ----------------------------------------------------
+# voxellized analog actor
+# ----------------------------------------------------
+/gate/actor/addActor                    PromptGammaAnalogActor  anvoxel
+/gate/actor/anvoxel/attachTo    	        patient
+/gate/actor/anvoxel/setInputDataFile      data/pgdb_newO_14e9.root
+#/gate/actor/anvoxel/setInputDataFile      data/db-Oxygen_merged.root
+/gate/actor/anvoxel/save                  output/analog-O.mhd
+
+#/gate/actor/anvoxel/setVoxelSize          1 1 1 mm
+/gate/actor/anvoxel/setVoxelSize          2 2 2 mm
+#/gate/actor/anvoxel/setVoxelSize          5 5 5 mm
+#/gate/actor/anvoxel/setVoxelSize          0.5 0.5 0.5 mm
+
+#/gate/actor/anvoxel/setVoxelSize          10 10 10 mm
+#/gate/actor/anvoxel/setVoxelSize          0.2 0.2 0.2 mm
+
+/gate/actor/anvoxel/setPosition           0 -148.9 0 mm
+/gate/actor/anvoxel/setSize               70 250 70 mm

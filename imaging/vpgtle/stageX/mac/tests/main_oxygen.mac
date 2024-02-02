@@ -1,0 +1,101 @@
+#=====================================================
+# VERBOSITY, PREAMBLE
+#=====================================================
+
+/control/alias NPRIM 10000000
+
+# Verbose
+/gate/verbose Physic    2
+/gate/verbose Cuts      0
+/gate/verbose SD        2
+/gate/verbose Actions   2
+/gate/verbose Actor     2
+/gate/verbose Step      0
+/gate/verbose Error     2
+/gate/verbose Warning   2
+/gate/verbose Output    2
+/gate/verbose Beam      0
+/gate/verbose Volume    2
+/gate/verbose Image     2
+/gate/verbose Geometry  2
+#/tracking/verbose 2
+
+# Materials
+/gate/geometry/setMaterialDatabase data/GateMaterials.db
+
+#=====================================================
+# GEOMETRY
+#=====================================================
+
+# Analytic phantom
+#/control/execute mac/phantom_Parodi_TNS_2005_52_3_modified.mac
+
+# Voxillized phantom
+/control/execute mac/geo_oxygen.mac
+
+#=====================================================
+# PHYSICS
+#=====================================================
+
+/control/execute mac/physics.mac
+
+#=====================================================
+# ACTORS
+#=====================================================
+
+/control/execute mac/actors.analog.voxel_oxygen.mac
+
+# ----------------------------------------------------
+# Gammas exiting patient
+#/gate/actor/addActor 		PhaseSpaceActor		Source
+#/gate/actor/Source/save			output/source.root
+#/gate/actor/Source/attachTo			patient
+#/gate/actor/Source/addFilter			particleFilter
+#/gate/actor/Source/particleFilter/addParticle	proton
+#/gate/actor/Source/particleFilter/addParticle	gamma
+#/gate/actor/Source/addFilter                       IDFilter
+#/gate/actor/Source/IDFilter/selectID         1
+#/gate/actor/Source/enableTime	true
+#/gate/actor/Source/storeSecondaries true
+#=====================================================
+# INITIALISATION
+#=====================================================
+
+/gate/run/initialize
+
+#=====================================================
+# SOURCE
+#=====================================================
+/gate/source/addSource mybeam gps
+/gate/source/mybeam/gps/particle     proton
+/gate/source/mybeam/gps/energytype   Mono
+/gate/source/mybeam/gps/ene/mono     130 MeV
+/gate/source/mybeam/gps/pos/type     Beam
+/gate/source/mybeam/gps/pos/shape    Circle
+/gate/source/mybeam/gps/pos/sigma_x  0 mm
+/gate/source/mybeam/gps/pos/sigma_y  0 mm
+/gate/source/mybeam/gps/ang/type     iso
+/gate/source/mybeam/gps/ang/sigma_x  0.00 rad
+/gate/source/mybeam/gps/ang/sigma_y  0.00 rad
+/gate/source/mybeam/gps/pos/centre   0 -300 0 mm
+/gate/source/mybeam/gps/direction    0 1 0
+/gate/source/mybeam/gps/time    0 ns
+
+#/gate/source/addSource PBS TPSPencilBeam
+#/gate/source/PBS/setTestFlag false
+#/gate/source/PBS/setPlan data/RTIPLAN.0912590.16.onelayer.txt
+#/gate/source/PBS/setFlatGenerationFlag false
+#/gate/source/PBS/setSourceDescriptionFile data/Source-Properties.txt
+
+#=====================================================
+# START BEAMS
+#=====================================================
+
+/gate/application/noGlobalOutput
+/gate/run/enableGlobalOutput false
+
+##/vis/disable
+
+/gate/random/setEngineName MersenneTwister
+/gate/application/setTotalNumberOfPrimaries {NPRIM}
+/gate/application/start

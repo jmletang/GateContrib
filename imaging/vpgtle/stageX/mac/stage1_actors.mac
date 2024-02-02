@@ -1,0 +1,7 @@
+
+# ACTORS: vpgTLE + PhaseSpace and Dose for patient
+
+/control/alias TimeBins 500
+
+/control/execute mac/stage1_actors_{Mode}.mac
+/control/strdoif {Element} == patient /control/execute mac/stage1_actors_patient.mac

@@ -1,0 +1,13 @@
+# ----------------------------------------------------
+# Voxellized vpg actor
+# ----------------------------------------------------
+/gate/actor/addActor                    PromptGammaTLEActor  pgtle
+/gate/actor/pgtle/attachTo    	        patient
+/gate/actor/pgtle/setInputDataFile      data/pgdb_20231027.root
+/gate/actor/pgtle/save                  output/source_{Mode}_{Element}.mhd
+/gate/actor/pgtle/setVoxelSize          {mmVoxel} {mmVoxel} {mmVoxel} mm
+/gate/actor/pgtle/setPosition           0 0 0 mm
+/gate/actor/pgtle/setSize               {XmmBox} {YmmBox} {ZmmBox} mm
+/gate/actor/pgtle/setTimeNbBins 	{TimeBins}
+
+/gate/actor/pgtle/enableDebugOutput	false

@@ -1,0 +1,46 @@
+# ----------------------------------------------------
+# PhaseSpace actor
+# ----------------------------------------------------
+# Stores the gammas escaping the patient.
+/gate/actor/addActor               	                     PhaseSpaceActor interPS
+/gate/actor/interPS/attachTo				     	patient
+/gate/actor/interPS/save      					output/patient-ps_{Mode}.root
+/gate/actor/interPS/storeOutgoingParticles			false
+/gate/actor/interPS/storeSecondaries 				true
+/gate/actor/interPS/enableAtomicNumber		        	false
+/gate/actor/interPS/enableCharge             			false
+/gate/actor/interPS/enableWeight             			false
+/gate/actor/interPS/enableMass               			false
+/gate/actor/interPS/enableCompact            			true
+/gate/actor/interPS/enableSpotIDFromSource   			PBS
+/gate/actor/interPS/enablePrimaryEnergy	     			true
+/gate/actor/interPS/enableTProd              			true
+/gate/actor/interPS/enableParticleName	     			false
+/gate/actor/interPS/useVolumeFrame           			false
+/gate/actor/interPS/addFilter    				particleFilter
+/gate/actor/interPS/particleFilter/addParticle 			gamma
+/gate/actor/interPS/particleFilter/addDirectParentParticle 	proton
+/gate/actor/interPS/enableProductionProcess     		true
+/gate/actor/interPS/addFilter                   		creatorProcessFilter
+/gate/actor/interPS/creatorProcessFilter/addCreatorProcess  	protonInelastic
+/gate/actor/interPS/addFilter    				energyFilter
+/gate/actor/interPS/energyFilter/setEmax  			10 MeV #to keep the output identical to the PromptGammaAnalogActor
+
+# ----------------------------------------------------
+# Dose actor
+# ----------------------------------------------------
+/gate/actor/addActor DoseActor doseMeasurement
+/gate/actor/doseMeasurement/attachTo 			patient
+/gate/actor/doseMeasurement/save 			output/dose_{Mode}.mhd
+/gate/actor/doseMeasurement/stepHitType 		random
+/gate/actor/doseMeasurement/setPosition 		0 0 0 mm
+# the following sizes are given by patient-2mm.mhd
+/gate/actor/doseMeasurement/setVoxelSize 		{mmVoxel} {mmVoxel} {mmVoxel} mm
+/gate/actor/doseMeasurement/setSize 			{XmmBox} {YmmBox} {ZmmBox} mm
+/gate/actor/doseMeasurement/enableEdep 			true
+/gate/actor/doseMeasurement/enableUncertaintyEdep 	false
+/gate/actor/doseMeasurement/enableSquaredEdep 		false
+/gate/actor/doseMeasurement/enableDose 			true
+/gate/actor/doseMeasurement/enableUncertaintyDose 	false
+/gate/actor/doseMeasurement/enableSquaredDose 		false
+/gate/actor/doseMeasurement/enableNumberOfHits 		true

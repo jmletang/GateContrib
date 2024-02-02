@@ -1,7 +1,5 @@
 
 /gate/physics/addPhysicsList QGSP_BIC_HP_EMY
-#/gate/physics/addPhysicsList QGSP_FTFP_BERT
-#/gate/physics/addPhysicsList QGSP_BERT_HP_EMY
 
 /gate/physics/Gamma/SetCutInRegion      world 10 km
 /gate/physics/Electron/SetCutInRegion   world 10 km

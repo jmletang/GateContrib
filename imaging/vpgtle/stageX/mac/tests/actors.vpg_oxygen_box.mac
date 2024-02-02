@@ -1,0 +1,33 @@
+/gate/actor/addActor                    PromptGammaTLEActor  pgtle
+/gate/actor/pgtle/attachTo    	        patient
+#/gate/actor/pgtle/setInputDataFile      data/pgdb.root
+/gate/actor/pgtle/setInputDataFile      data/pgdb_newO_14e9.root
+/gate/actor/pgtle/save                  output/source-O_box.mhd
+
+#/gate/actor/pgtle/setVoxelSize          1 1 1 mm
+/gate/actor/pgtle/setVoxelSize          2 2 2 mm
+
+
+/gate/actor/pgtle/setPosition           0 0 0 mm
+/gate/actor/pgtle/setSize               70 250 70 mm
+
+/gate/actor/pgtle/enableDebugOutput		false
+#/gate/actor/pgtle/enableOutputMatch		true
+
+#/gate/actor/pgtleplacement/setRotationAxis X 0 0 
+#/gate/actor/pgtleplacement/setRotationAngle N deg 
+
+#/gate/actor/addActor DoseActor doseMeasurement
+#/gate/actor/doseMeasurement/attachTo patient
+#/gate/actor/doseMeasurement/save output/dose.mhd
+#/gate/actor/doseMeasurement/stepHitType random
+#/gate/actor/doseMeasurement/setPosition 0 -51 0 mm
+#/gate/actor/doseMeasurement/setVoxelSize 2 2 2 mm
+#/gate/actor/doseMeasurement/setSize 70 250 70 mm
+#/gate/actor/doseMeasurement/enableEdep true
+#/gate/actor/doseMeasurement/enableUncertaintyEdep true
+#/gate/actor/doseMeasurement/enableSquaredEdep true
+#/gate/actor/doseMeasurement/enableDose true
+#/gate/actor/doseMeasurement/enableUncertaintyDose false
+#/gate/actor/doseMeasurement/enableSquaredDose false
+#/gate/actor/doseMeasurement/enableNumberOfHits true

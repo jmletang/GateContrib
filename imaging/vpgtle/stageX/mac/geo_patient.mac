@@ -1,0 +1,28 @@
+# -----------------------------------------------------
+# World
+/gate/world/geometry/setXLength 3 m
+/gate/world/geometry/setYLength 3 m
+/gate/world/geometry/setZLength 3 m
+/gate/world/setMaterial Vacuum
+/gate/world/vis/setVisible 0
+
+#=====================================================
+# Aliases to set the geometry of the same PG volume for both stages 1 & 2
+#=====================================================
+
+/control/alias XmmBox 100
+/control/alias YmmBox 268
+/control/alias ZmmBox 100
+
+/control/alias mmVoxel 2
+
+# -----------------------------------------------------
+# Patient
+/gate/world/daughters/name                         patient
+/gate/world/daughters/insert                       ImageNestedParametrisedVolume
+/gate/geometry/setMaterialDatabase                 data/patient-HUmaterials.db
+/gate/patient/geometry/setHUToMaterialFile         data/patient-HU2mat.txt
+/gate/patient/geometry/setImage                    data/patient-2mm.mhd
+/gate/patient/geometry/buildAndDumpLabeledImage	   output/labelimage.mhd
+/gate/patient/vis/forceWireframe
+

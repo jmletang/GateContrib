@@ -1,0 +1,26 @@
+# -----------------------------------------------------
+# World
+/gate/world/setMaterial            Air
+/gate/world/geometry/setXLength    3 m
+/gate/world/geometry/setYLength    3 m
+/gate/world/geometry/setZLength    3 m
+
+#=====================================================
+# Aliases to set the geometry of the same PG volume for both stages 1 & 2
+#=====================================================
+
+/control/alias XmmBox 40
+/control/alias YmmBox 150
+/control/alias ZmmBox 40
+
+/control/alias mmVoxel 1
+
+#=====================================================
+# simple box
+/gate/world/daughters/name                patient
+/gate/world/daughters/insert              box
+/gate/patient/geometry/setXLength         {XmmBox} mm
+/gate/patient/geometry/setYLength         {YmmBox} mm
+/gate/patient/geometry/setZLength         {ZmmBox} mm
+/gate/patient/placement/setTranslation    0 0 0 cm
+/gate/patient/setMaterial                 {Element}

@@ -1,0 +1,10 @@
+#=====================================================
+# PREAMBLE
+#=====================================================
+
+/control/alias StageID 2
+/control/alias Mode vpg
+/control/alias Element patient
+/control/alias NrPrim 1e4
+
+/control/execute mac/stage.mac

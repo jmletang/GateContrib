@@ -1,0 +1,21 @@
+/gate/physics/addPhysicsList QGSP_BIC_HP_EMY
+
+/gate/physics/Gamma/SetCutInRegion      world 1 km
+/gate/physics/Electron/SetCutInRegion   world 1 km
+/gate/physics/Proton/SetCutInRegion     world 1 km
+/gate/physics/Positron/SetCutInRegion   world 1 km
+
+/gate/physics/Gamma/SetCutInRegion      patient 1 mm
+/gate/physics/Proton/SetCutInRegion     patient 1 mm
+/gate/physics/Electron/SetCutInRegion   patient 1 mm
+/gate/physics/Positron/SetCutInRegion   patient 1 mm
+
+# StepLimiter *required*
+/gate/physics/SetMaxStepSizeInRegion patient 1 mm
+/gate/physics/ActivateStepLimiter proton
+/gate/physics/ActivateStepLimiter deuteron
+/gate/physics/ActivateStepLimiter triton
+/gate/physics/ActivateStepLimiter alpha
+/gate/physics/ActivateStepLimiter GenericIon
+
+#/gate/physics/displayCuts

@@ -1,0 +1,5 @@
+
+# BEAMS: monoE for material box, RT-plan for patient
+
+/control/strdoif {Element} != patient /control/execute mac/stage1_monoE.mac
+/control/strdoif {Element} == patient /control/execute mac/stage1_RTplan.mac

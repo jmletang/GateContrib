@@ -1,0 +1,102 @@
+#=====================================================
+# VERBOSITY, PREAMBLE
+#=====================================================
+
+/control/alias NPRIM 1000000
+
+# Verbose
+/gate/verbose Physic    0
+/gate/verbose Cuts      0
+/gate/verbose SD        0
+/gate/verbose Actions   0
+/gate/verbose Actor     0
+/gate/verbose Step      0
+/gate/verbose Error     0
+/gate/verbose Warning   0
+/gate/verbose Output    0
+/gate/verbose Beam      0
+/gate/verbose Volume    0
+/gate/verbose Image     0
+/gate/verbose Geometry  0
+#/tracking/verbose 2
+
+
+#=====================================================
+# GEOMETRY
+#=====================================================
+
+/control/execute mac/geo.vpg_oxygen.mac
+
+#=====================================================
+# PHYSICS
+#=====================================================
+
+/gate/physics/addPhysicsList QGSP_BIC_HP_EMY
+
+/gate/physics/Gamma/SetCutInRegion      world 10 km
+/gate/physics/Electron/SetCutInRegion   world 10 km
+/gate/physics/Proton/SetCutInRegion     world 10 km
+/gate/physics/Positron/SetCutInRegion   world 10 km
+
+/gate/physics/Gamma/SetCutInRegion      patient 1 mm
+/gate/physics/Proton/SetCutInRegion     patient 1 mm
+/gate/physics/Electron/SetCutInRegion   patient 1 km
+/gate/physics/Positron/SetCutInRegion   patient 1 km
+
+# StepLimiter *required*
+/gate/physics/SetMaxStepSizeInRegion patient 1 mm
+/gate/physics/ActivateStepLimiter proton
+/gate/physics/ActivateStepLimiter deuteron
+/gate/physics/ActivateStepLimiter triton
+/gate/physics/ActivateStepLimiter alpha
+/gate/physics/ActivateStepLimiter GenericIon
+
+#=====================================================
+# ACTORS
+#=====================================================
+/control/execute mac/actors.vpg_oxygen.mac
+
+#=====================================================
+# INITIALISATION
+#=====================================================
+
+/gate/run/initialize
+
+
+#=====================================================
+# SOURCE
+#=====================================================
+/gate/source/addSource mybeam gps
+/gate/source/mybeam/gps/particle     proton
+/gate/source/mybeam/gps/energytype   Mono
+/gate/source/mybeam/gps/ene/mono     130 MeV
+/gate/source/mybeam/gps/pos/type     Beam
+/gate/source/mybeam/gps/pos/shape    Circle
+/gate/source/mybeam/gps/pos/sigma_x  0 mm
+/gate/source/mybeam/gps/pos/sigma_y  0 mm
+/gate/source/mybeam/gps/ang/type     iso
+/gate/source/mybeam/gps/ang/sigma_x  0.00 rad
+/gate/source/mybeam/gps/ang/sigma_y  0.00 rad
+/gate/source/mybeam/gps/pos/centre   0 -300 0 mm
+/gate/source/mybeam/gps/direction    0 1 0
+/gate/source/mybeam/gps/time    0 ns
+
+#/gate/source/addSource PBS TPSPencilBeam
+#/gate/source/PBS/setTestFlag false
+#/gate/source/PBS/setPlan data/RTIPLAN.0912590.16.onelayer.txt
+#/gate/source/PBS/setFlatGenerationFlag false
+#/gate/source/PBS/setSourceDescriptionFile data/Source-Properties.txt
+
+
+#=====================================================
+# START BEAMS
+#=====================================================
+
+/gate/application/noGlobalOutput
+/gate/run/enableGlobalOutput false
+
+##/vis/disable
+
+/gate/random/setEngineName MersenneTwister
+/gate/application/setTotalNumberOfPrimaries {NPRIM}
+/gate/application/start

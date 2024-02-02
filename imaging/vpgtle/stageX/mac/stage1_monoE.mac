@@ -1,0 +1,15 @@
+
+/gate/source/addSource mybeam gps
+/gate/source/mybeam/gps/particle     proton
+/gate/source/mybeam/gps/energytype   Mono
+/gate/source/mybeam/gps/ene/mono     130 MeV
+/gate/source/mybeam/gps/pos/type     Beam
+/gate/source/mybeam/gps/pos/shape    Circle
+/gate/source/mybeam/gps/pos/sigma_x  0 mm
+/gate/source/mybeam/gps/pos/sigma_y  0 mm
+/gate/source/mybeam/gps/ang/type     iso
+/gate/source/mybeam/gps/ang/sigma_x  0.00 rad
+/gate/source/mybeam/gps/ang/sigma_y  0.00 rad
+/gate/source/mybeam/gps/pos/centre   0 -300 0 mm
+/gate/source/mybeam/gps/direction    0 1 0
+/gate/source/mybeam/gps/time         0 ns

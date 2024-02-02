@@ -1,0 +1,28 @@
+#=====================================================
+# Detection sphere shell
+#=====================================================
+
+/gate/world/daughters/name detector
+/gate/world/daughters/insert sphere
+/gate/detector/geometry/setRmin 550 mm
+/gate/detector/geometry/setRmax 555 mm
+/gate/detector/placement/setTranslation    0 0 0 cm
+/gate/detector/setMaterial Vacuum
+
+#=====================================================
+# Gammas entering detector
+#=====================================================
+
+/gate/actor/addActor 		PhaseSpaceActor		GammaInDetector
+/gate/actor/GammaInDetector/save			output/detector_{Mode}_{Element}.root
+/gate/actor/GammaInDetector/attachTo			detector
+/gate/actor/GammaInDetector/addFilter			particleFilter
+/gate/actor/GammaInDetector/particleFilter/addParticle	gamma
+/gate/actor/GammaInDetector/addFilter	                IDFilter
+/gate/actor/GammaInDetector/IDFilter/selectID	        1
+/gate/actor/GammaInDetector/enableTime                  true
+/gate/actor/GammaInDetector/enableIonTime               true
+/gate/actor/GammaInDetector/enableTOut                  true
+/gate/actor/GammaInDetector/enableTProd                 true
+/gate/actor/GammaInDetector/enablePrimaryEnergy         true
+/gate/actor/GammaInDetector/enableEmissionPoint         true

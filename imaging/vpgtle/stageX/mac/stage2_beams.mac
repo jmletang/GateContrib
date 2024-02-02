@@ -1,0 +1,7 @@
+
+# BEAMS
+
+/gate/source/addSource PGS    SourceOfPromptGamma
+/gate/source/PGS/setFilename  data/source_{Mode}_{Element}_proton2dary.mhd
+/gate/source/PGS/attachTo     patient
+/gate/source/PGS/setTof       true

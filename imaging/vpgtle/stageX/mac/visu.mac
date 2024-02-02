@@ -1,0 +1,36 @@
+#=====================================================
+# VERBOSE
+
+#/gate/verbose Physic    2
+#/gate/verbose Run    1
+#/gate/verbose Cuts      0
+#/gate/verbose SD        2
+#/gate/verbose Actions   2
+#/gate/verbose Actor     2
+#/gate/verbose Step      0
+#/gate/verbose Error     2
+#/gate/verbose Warning   2
+#/gate/verbose Output    2
+#/gate/verbose Beam      0
+#/gate/verbose Volume    5
+#/gate/verbose Image     11
+#/gate/verbose Geometry  2
+#/tracking/verbose 2
+
+#=====================================================
+# VISUALISATION 
+
+/vis/disable
+
+#/vis/open                             OGLIQt
+##/vis/open                             OGLSQt
+##/vis/open                             VRML2FILE
+#/vis/drawVolume
+#/vis/modeling/trajectories/create/drawByParticleID
+#/vis/viewer/flush
+#/vis/viewer/set/viewpointThetaPhi 30 140
+#/vis/viewer/zoom 5
+#/tracking/storeTrajectory             1
+#/vis/scene/add/trajectories 
+#/vis/scene/endOfEventAction           accumulate -1
+#/vis/viewer/set/auxiliaryEdge true
